@@ -1,0 +1,20 @@
+spring:
+  application:
+    name: TrackPro-EurekaService  # This remains the same, naming your application
+
+server:
+  port: 5555  # The port the Eureka server will run on
+
+eureka:
+  instance:
+    hostname: eureka-server  # Change to match the Docker container name, eureka-server
+  client:
+    serviceUrl:
+      defaultZone: http://eureka-server:5555/eureka  # Use Docker service name here
+    register-with-eureka: false  # The Eureka server should not register itself as a client
+    fetch-registry: false  # This prevents fetching the registry as a client
+
+# Optional: add logging for better debug information
+logging:
+  level:
+    org.springframework.cloud.netflix.eureka: DEBUG  # To enable more detailed logs for Eureka

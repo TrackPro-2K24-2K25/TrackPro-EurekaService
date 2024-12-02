@@ -1,0 +1,20 @@
+
+services:
+  eureka-server:
+    image: trackpro:latest
+    container_name: eureka-server
+    ports:
+      - "5555:5555"
+    environment:
+      - SPRING_APPLICATION_NAME=eureka-server
+      - SERVER_PORT=5555
+      - EUREKA_INSTANCE_HOSTNAME=localhost
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://localhost:5555/eureka
+      - EUREKA_CLIENT_REGISTER_WITH_EUREKA=false
+      - EUREKA_CLIENT_FETCH_REGISTRY=false
+    networks:
+      - eureka-network
+
+networks:
+  eureka-network:
+    driver: bridge
